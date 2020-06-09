@@ -1,15 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Portfolio Store</title>
-<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/chanPwdForm.css"/>">
+	<meta charset="UTF-8">
+	<title>Portfolio Store</title>
+	
+	<link href="../resources/css/chanPwdForm.css" rel="stylesheet">
 </head>
-<script src="<c:url value="http://code.jquery.com/jquery-3.4.1.min.js"/>"></script>
-<script src="<c:url value="/resources/js/chanPwdForm.js"/>"></script>
+
 <body>
 <div class="mainDiv">
 	<input type="hidden" id="userId" value=${userId }>
@@ -23,5 +22,7 @@
 		</div>
 	</form>
 </div>
+<script src="../resources/js/jquery/jquery.min.js"></script>
+<script src="../resources/js/chanPwdForm.js"></script>
 </body>
 </html>

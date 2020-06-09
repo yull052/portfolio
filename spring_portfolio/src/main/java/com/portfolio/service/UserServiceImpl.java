@@ -12,7 +12,7 @@ import com.portfolio.vo.UserVO;
 @Service
 public class UserServiceImpl implements UserService {
 	@Autowired
-	UserDAO userDAO;	
+	UserDAO userDAO;
 
 	@Autowired
 	PasswordEncoder passwordEncoder;
@@ -34,11 +34,8 @@ public class UserServiceImpl implements UserService {
 	@Override 
 	public void join(UserVO userVO, HttpSession session) { // 회원가입폼을 DB로 전달
 		// session 생성 
-		session.setAttribute("userName", userVO.getUserName());
 		session.setAttribute("userId", userVO.getUserId());
-		
-		if(userVO.getUserEmail().equals("")) {// 이메일 입력값 없을 시 "-" 추가
-		userVO.setUserEmail("-"); }
+		session.setAttribute("userName", userVO.getUserName());
 		  
 		// 비밀번호 암호화
 		userVO.setUserPwd(passwordEncoder.encode(userVO.getUserPwd()));
@@ -62,6 +59,12 @@ public class UserServiceImpl implements UserService {
 		
 		// 비밀번호 전달
 		userDAO.chanPwd(userVO);
+	}
+	
+	// 이메일 인증
+	@Override
+	public void emailAuth(String userEmail) {
+		
 	}
 
 }

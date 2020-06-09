@@ -12,6 +12,8 @@ public interface UserService {
 
 	String findInfo(UserVO userVO);
 
-	void chanPwd(UserVO userVO); 
+	void chanPwd(UserVO userVO);
+
+	void emailAuth(String userEmail); 
 
 }

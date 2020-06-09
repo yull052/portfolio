@@ -1,8 +1,9 @@
 package com.portfolio.controller;
 
 
-
 import javax.inject.Inject;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.portfolio.service.MailService;
 import com.portfolio.service.UserService;
 import com.portfolio.vo.UserVO;
 
@@ -22,6 +24,9 @@ import com.portfolio.vo.UserVO;
 public class UserController {
 	@Inject
 	UserService service;
+	
+	@Inject
+	MailService mailService;
 	
 	//	회원가입 폼
 	@RequestMapping("/joinForm.do")
@@ -75,6 +80,11 @@ public class UserController {
 		service.chanPwd(userVO);
 		ModelAndView mav = new ModelAndView("/user/joinForm");
 		return mav;
+	}
+	
+	@RequestMapping("/emailAuth.do")
+	public String emailAuth(@RequestParam String userEmail, HttpServletRequest req) {
+		return mailService.send(userEmail, req);
 	}
 	
 }

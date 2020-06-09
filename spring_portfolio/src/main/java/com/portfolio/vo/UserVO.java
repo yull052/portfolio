@@ -12,4 +12,5 @@ public class UserVO {
 	private String userName;
 	private String userPhone;
 	private String userEmail;
+	private int admin;
 }

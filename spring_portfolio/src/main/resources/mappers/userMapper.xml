@@ -5,27 +5,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="userSQL">
 	<!-- 아이디 정보 확인 -->
 	<select id="getId" parameterType="string" resultType="user">
-		select * from test where userId = #{userId}
+		select * from tbl_user where userId = #{userId}
 	</select>
 	
 	
 	<!-- 회원 가입 -->
 	<insert id="userRegister" parameterType="user">
-		insert into test (USERID
+		insert into tbl_user (USERID
 							 ,USERPWD
 							 ,USERNAME
-							 ,USERPHONE
 							 ,USEREMAIL) 
 					values (#{userId} 
 							,#{userPwd} 
 							,#{userName}
-							,#{userPhone}
 							,#{userEmail})
 	</insert>
 	
 	<!-- 정보 찾기 -->
 	<select id="findInfo" parameterType="user" resultType="string">
-		select userId from test
+		select userId from tbl_user
 		where
 		<choose>
 			<when test='userId == null'>
@@ -35,11 +33,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				userId=#{userId}
 			</otherwise>
 		</choose>
-		and userPhone=#{userPhone}
+		and userEmail=#{userEmail}
 	</select>
 	
 	<!-- 비밀번호 변경 -->
 	<update id="chanPwd" parameterType="user">
-		update test set userPwd=#{userPwd} where userId=#{userId}
+		update tbl_user set userPwd=#{userPwd} where userId=#{userId}
 	</update>
 </mapper>

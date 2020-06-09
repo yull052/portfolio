@@ -15,7 +15,7 @@ $(function(){
 						location.href='../login/loginForm.do';
 					}
 					else{
-						location.href='../store/storeMain.do';
+						location.href='../store/storeMain.do?current=home';
 					}
 				}
 			});
