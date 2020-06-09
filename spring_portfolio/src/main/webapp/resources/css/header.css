@@ -1,0 +1,25 @@
+@charset "UTF-8";
+#btnGroupDrop1{
+	color: rgba(255,255,255,0.5);
+}
+#btnGroupDrop1:hover {
+	color: #fff;
+
+}
+#userInfo{
+	padding-left: 10%;
+	letter-spacing: 2px;
+	width: 380px;
+}
+#userId{
+	font-size: 13px;
+	text-decoration: underline;
+    color: #fff;
+}
+
+.infoBtn_group{
+	padding: 8px 0 0 10px;
+	display: inline-block;
+}
+
+

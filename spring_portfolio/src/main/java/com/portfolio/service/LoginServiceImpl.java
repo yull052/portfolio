@@ -34,6 +34,7 @@ public class LoginServiceImpl implements LoginService {
     	if(passwordEncoder.matches(rawPwd, userVO.getUserPwd())) {// 비밀번호 암호화 값 비교
     		session.setAttribute("userId", userVO.getUserId());
      		session.setAttribute("userName", userVO.getUserName());
+     		session.setAttribute("admin", userVO.getAdmin());
      		return true;
         }else {
      		return false;
@@ -71,6 +72,7 @@ public class LoginServiceImpl implements LoginService {
         session.removeAttribute("access_Token");
         session.removeAttribute("userId");
         session.removeAttribute("userName");
+        session.removeAttribute("admin");
 	}
 
 

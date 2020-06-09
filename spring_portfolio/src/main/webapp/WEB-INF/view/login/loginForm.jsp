@@ -4,12 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Portfolio Store</title>  
-<link rel="stylesheet" type="text/css" href="<c:url value="/resources/css/loginForm.css"/>"> 
+	<meta charset="UTF-8">
+	<title>Portfolio Store</title>  
+	
+	<link href="../resources/css/loginForm.css" rel="stylesheet" > 
 </head>
-<script type="text/javascript" src="<c:url value="http://code.jquery.com/jquery-3.4.1.min.js"/>"></script>
-<script type="text/javascript" src="<c:url value="/resources/js/loginForm.js"/>"></script>
+
 <body>
 	<div class="wrapDiv">
 		<div class="mainConDiv">
@@ -38,5 +38,7 @@
 		    </div>
 	    </div>
     </div>
+<script src="../resources/js/jquery/jquery.min.js"></script>
+<script src="../resources/js/loginForm.js"></script>
 </body>
 </html>

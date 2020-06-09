@@ -1,0 +1,17 @@
+@charset "UTF-8";
+.infoBtn_group{
+	padding: 8px 0 0 10px;
+	display: inline-block;
+}
+
+.bg-primary{
+	background-color: #2E9AFE !important;
+	margin-bottom: 2%
+}
+#btnGroupDrop1{
+	background-color:  #2E9AFE;
+}
+#userName{
+	margin-right: 20px;
+}
+

@@ -17,23 +17,52 @@ $(function(){
 			var html = '<input type="text" id="userId" name="userId" placeholder="아이디 입력">';
 			$('#text1L').append('아이디');
 		}
-		var html2 = '<input type="text" id="userPhone" name="userPhone" placeholder="ex) 010-1234-1234">';
+		var html2 = '<input type="text" id="userEmail" name="userEmail" placeholder="ex) example@~~~.com">';
 		$('.text1').append(html);
 		$('.text2').append(html2);	
-		$('#text2L').append('휴대폰');
+		$('#text2L').append('이메일');
+	});
+
+	
+	var nameRegex = /^[가-힣]{2,5}$/;
+	var emailRegex = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+	var idRegex = /^[a-zA-Z]{1}[a-zA-Z0-9_]{4,11}$/;
+	
+	//	유효성 검사
+	$('#findInfo').on('click',function(){
+		if(state=='id'){ // 아이디 찾기 시
+			if(($('#userName').val()!='')&&($('#userEmail').val()!='')){
+				if(nameRegex.test($('#userName'))==true){
+					if(emailRegex.test()==true){
+						ajaxFn();
+					}else{
+						alert('이메일 형식에 맞춰주세요');
+					}
+				}else{
+					alert('2~5자 한글만 입력해주세요');
+				}
+			}else{
+				alert('이름, 이메일을 입력해주세요');
+			}		
+		}
+		if(state=='pwd'){ // 비밀번호 찾기 시
+			if(($('#userId').val()!='')&&($('#userEmail').val()!='')){			
+				if(idRegex.test($('#userId').val())==true) {
+					if(emailRegex.test($('#userEmail').val())==true){
+						ajaxFn();
+					}else{
+						alert('이메일 형식에 맞춰주세요');
+					}
+				}else{
+					alert('아이디는 영문자로 시작 (5~12)');
+				}
+			}else{
+				alert('아이디, 휴대폰을 입력해주세요');
+			}
+
+		}
 	});
 	
-	//	userName 길이
-	function getTextLength(str) {
-        var len = 0;
-        for (var i = 0; i < str.length; i++) {
-            if (escape(str.charAt(i)).length == 6) {
-                len++;
-            }
-            len++;
-        }
-        return len;
-    }
 	//	ajax
 	function ajaxFn(){
 		$.ajax({
@@ -42,7 +71,7 @@ $(function(){
 			data : {
 				'userName' : $('#userName').val(),
 				'userId' : $('#userId').val(),
-				'userPhone' : $('#userPhone').val()
+				'userEmail' : $('#userEmail').val()
 				},
 			dataType : 'text',
 			success : function(data){
@@ -60,45 +89,6 @@ $(function(){
 		});
 	}
 	
-	//	유효성 검사
-	$('#findInfo').on('click',function(){
-		if(state=='id'){
-			if(($('#userName').val()!='')&&($('#userPhone').val()!='')){
-				var nameLen = getTextLength($('#userName').val());
-				if((nameLen<2)||(nameLen>6)){
-					alert('2~6자 사이 한글만 입력해주세요');
-				}else{
-					var regExp = /(01[0|1|6|9|7])[-](\d{3}|\d{4})[-](\d{4}$)/g;
-					if(regExp.test($('#userPhone').val())==false){
-						alert('입력 형식에 맞춰주세요 ex) 010-1234-1234');
-					}else{
-						ajaxFn();
-					}
-				}	
-			}else{
-				alert('이름, 휴대폰을 입력해주세요');
-			}
-		}
-		if(state=='pwd'){
-			if(($('#userId').val()!='')&&($('#userPhone').val()!='')){
-				var regExp = /^[a-zA-Z]{1}[a-zA-Z0-9_]{4,11}$/;
-				if(regExp.test($('#userId').val())==false) {
-					alert('아이디는 영문자로 시작 (5~12)');
-				}else{
-					var regExp = /(01[0|1|6|9|7])[-](\d{3}|\d{4})[-](\d{4}$)/g;
-					if(regExp.test($('#userPhone').val())==false){
-						alert('입력 형식에 맞춰주세요 ex) 010-1234-1234');
-					}else{
-						ajaxFn();
-					}
-				}
-			}else{
-				alert('아이디, 휴대폰을 입력해주세요');
-			}
-
-		}
-	});
-
 	// 취소 버튼
 	$('#cancelBtn').on('click',function(){
 		location.href='../login/loginForm.do';

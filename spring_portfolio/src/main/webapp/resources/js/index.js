@@ -1,9 +1,6 @@
-$(function(){
-	$('#titleL').on('click',function(){
-		location.href='../main/main.do';
-	});
-
-	$('#loginBtn').on('click',function(){
-		location.href='../login/loginForm.do';
-	});
+$('#joinBtn').on('click',function(){
+	location.href='../user/joinForm.do';
+});
+$('#loginBtn').on('click',function(){
+	location.href='../login/loginForm.do';
 });

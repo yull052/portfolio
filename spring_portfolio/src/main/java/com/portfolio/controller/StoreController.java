@@ -12,4 +12,10 @@ public class StoreController {
 		 ModelAndView mav = new ModelAndView("/store/storeMain");
 		 return mav;
 	}
+	
+	@RequestMapping("/about.do")
+	public ModelAndView about() {
+		 ModelAndView mav = new ModelAndView("/store/about");
+		 return mav;
+	}
 }
